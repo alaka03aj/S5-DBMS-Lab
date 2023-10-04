@@ -157,3 +157,41 @@ select name, class, year from TLE except select name, class, year from GDSC;
 +----------------+-------+------+
 4 rows in set (0.001 sec)
 ```
+
+## CARTESIAN PRODUCT
+```
+SELECT * FROM TLE CROSS JOIN FOSS;
+```
+### oUTPUT
+```
++------------+----------------+------------------+-------+------+------------+------------+------------+------------------+------------------+-------+------+------------+------------+
+| stud_id    | name           | role             | class | year | events_reg | phone      | stud_id    | name             | role             | class | year | events_reg | phone      |
++------------+----------------+------------------+-------+------+------------+------------+------------+------------------+------------------+-------+------+------------+------------+
+| MDL20CS021 | Arathy Sha     | Events Head      | CSA   | 2024 |          5 | 1234567892 | MDL20CS052 | Jithin Jagadeesh | Chairperson      | CSB   | 2024 |          6 | 1234567890 |
+| MDL20CS029 | Hanna Salam    | Chairperson      | CSB   | 2024 |          2 | 1234567890 | MDL20CS052 | Jithin Jagadeesh | Chairperson      | CSB   | 2024 |          6 | 1234567890 |
+| MDL20EC043 | Jeswin Thomas  | Vice Chairperson | ECA   | 2024 |          5 | 1234567891 | MDL20CS052 | Jithin Jagadeesh | Chairperson      | CSB   | 2024 |          6 | 1234567890 |
+| MDL21CS012 | Alaka A J      | Design Head      | CSB   | 2025 |          5 | 1234567894 | MDL20CS052 | Jithin Jagadeesh | Chairperson      | CSB   | 2024 |          6 | 1234567890 |
+| MDL21CS102 | Vignesh S Naik | CP Head          | CSA   | 2025 |          5 | 1234567893 | MDL20CS052 | Jithin Jagadeesh | Chairperson      | CSB   | 2024 |          6 | 1234567890 |
+| MDL20CS021 | Arathy Sha     | Events Head      | CSA   | 2024 |          5 | 1234567892 | MDL20CS120 | Vishnu P         | Vice Chairperson | CSB   | 2024 |          2 | 1234567891 |
+| MDL20CS029 | Hanna Salam    | Chairperson      | CSB   | 2024 |          2 | 1234567890 | MDL20CS120 | Vishnu P         | Vice Chairperson | CSB   | 2024 |          2 | 1234567891 |
+| MDL20EC043 | Jeswin Thomas  | Vice Chairperson | ECA   | 2024 |          5 | 1234567891 | MDL20CS120 | Vishnu P         | Vice Chairperson | CSB   | 2024 |          2 | 1234567891 |
+| MDL21CS012 | Alaka A J      | Design Head      | CSB   | 2025 |          5 | 1234567894 | MDL20CS120 | Vishnu P         | Vice Chairperson | CSB   | 2024 |          2 | 1234567891 |
+| MDL21CS102 | Vignesh S Naik | CP Head          | CSA   | 2025 |          5 | 1234567893 | MDL20CS120 | Vishnu P         | Vice Chairperson | CSB   | 2024 |          2 | 1234567891 |
+| MDL20CS021 | Arathy Sha     | Events Head      | CSA   | 2024 |          5 | 1234567892 | MDL21CS022 | Annu Kuruvilla   | Design Head      | CSB   | 2025 |          3 | 1234567894 |
+| MDL20CS029 | Hanna Salam    | Chairperson      | CSB   | 2024 |          2 | 1234567890 | MDL21CS022 | Annu Kuruvilla   | Design Head      | CSB   | 2025 |          3 | 1234567894 |
+| MDL20EC043 | Jeswin Thomas  | Vice Chairperson | ECA   | 2024 |          5 | 1234567891 | MDL21CS022 | Annu Kuruvilla   | Design Head      | CSB   | 2025 |          3 | 1234567894 |
+| MDL21CS012 | Alaka A J      | Design Head      | CSB   | 2025 |          5 | 1234567894 | MDL21CS022 | Annu Kuruvilla   | Design Head      | CSB   | 2025 |          3 | 1234567894 |
+| MDL21CS102 | Vignesh S Naik | CP Head          | CSA   | 2025 |          5 | 1234567893 | MDL21CS022 | Annu Kuruvilla   | Design Head      | CSB   | 2025 |          3 | 1234567894 |
+| MDL20CS021 | Arathy Sha     | Events Head      | CSA   | 2024 |          5 | 1234567892 | MDL21CS055 | Karthik G Kumar  | Secretary        | CSA   | 2025 |          3 | 1234567893 |
+| MDL20CS029 | Hanna Salam    | Chairperson      | CSB   | 2024 |          2 | 1234567890 | MDL21CS055 | Karthik G Kumar  | Secretary        | CSA   | 2025 |          3 | 1234567893 |
+| MDL20EC043 | Jeswin Thomas  | Vice Chairperson | ECA   | 2024 |          5 | 1234567891 | MDL21CS055 | Karthik G Kumar  | Secretary        | CSA   | 2025 |          3 | 1234567893 |
+| MDL21CS012 | Alaka A J      | Design Head      | CSB   | 2025 |          5 | 1234567894 | MDL21CS055 | Karthik G Kumar  | Secretary        | CSA   | 2025 |          3 | 1234567893 |
+| MDL21CS102 | Vignesh S Naik | CP Head          | CSA   | 2025 |          5 | 1234567893 | MDL21CS055 | Karthik G Kumar  | Secretary        | CSA   | 2025 |          3 | 1234567893 |
+| MDL20CS021 | Arathy Sha     | Events Head      | CSA   | 2024 |          5 | 1234567892 | MDL21CS060 | Mekha L          | Marketing Head   | CSA   | 2025 |          3 | 1234567892 |
+| MDL20CS029 | Hanna Salam    | Chairperson      | CSB   | 2024 |          2 | 1234567890 | MDL21CS060 | Mekha L          | Marketing Head   | CSA   | 2025 |          3 | 1234567892 |
+| MDL20EC043 | Jeswin Thomas  | Vice Chairperson | ECA   | 2024 |          5 | 1234567891 | MDL21CS060 | Mekha L          | Marketing Head   | CSA   | 2025 |          3 | 1234567892 |
+| MDL21CS012 | Alaka A J      | Design Head      | CSB   | 2025 |          5 | 1234567894 | MDL21CS060 | Mekha L          | Marketing Head   | CSA   | 2025 |          3 | 1234567892 |
+| MDL21CS102 | Vignesh S Naik | CP Head          | CSA   | 2025 |          5 | 1234567893 | MDL21CS060 | Mekha L          | Marketing Head   | CSA   | 2025 |          3 | 1234567892 |
++------------+----------------+------------------+-------+------+------------+------------+------------+------------------+------------------+-------+------+------------+------------+
+25 rows in set (0.001 sec)
+```
