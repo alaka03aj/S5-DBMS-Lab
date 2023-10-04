@@ -162,7 +162,7 @@ select name, class, year from TLE except select name, class, year from GDSC;
 ```
 SELECT * FROM TLE CROSS JOIN FOSS;
 ```
-### oUTPUT
+### Output
 ```
 +------------+----------------+------------------+-------+------+------------+------------+------------+------------------+------------------+-------+------+------------+------------+
 | stud_id    | name           | role             | class | year | events_reg | phone      | stud_id    | name             | role             | class | year | events_reg | phone      |
@@ -194,4 +194,81 @@ SELECT * FROM TLE CROSS JOIN FOSS;
 | MDL21CS102 | Vignesh S Naik | CP Head          | CSA   | 2025 |          5 | 1234567893 | MDL21CS060 | Mekha L          | Marketing Head   | CSA   | 2025 |          3 | 1234567892 |
 +------------+----------------+------------------+-------+------+------------+------------+------------+------------------+------------------+-------+------+------------+------------+
 25 rows in set (0.001 sec)
+```
+
+## INNER JOIN
+```
+SELECT * FROM Clubs INNER JOIN FOSS ON Clubs.lead_id = FOSS.stud_id;
+```
+### Output
+```
++----------+----------+------------------+-----------------+------------+--------------+------------+----------------+------------+------------+------------------+-------------+-------+------+------------+------------+
+| club_id  | name     | lead_name        | faculty_advisor | founded_on | member_count | phone      | email          | lead_id    | stud_id    | name             | role        | class | year | events_reg | phone      |
++----------+----------+------------------+-----------------+------------+--------------+------------+----------------+------------+------------+------------------+-------------+-------+------+------------+------------+
+| foss.mec | FOSS MEC | Jithin Jagadeesh | Sony P          |       2016 |          500 | 1234567890 | foss@mec.ac.in | MDL20CS052 | MDL20CS052 | Jithin Jagadeesh | Chairperson | CSB   | 2024 |          6 | 1234567890 |
++----------+----------+------------------+-----------------+------------+--------------+------------+----------------+------------+------------+------------------+-------------+-------+------+------------+------------+
+1 row in set (0.001 sec)
+```
+
+## LEFT JOIN
+```
+SELECT * FROM Clubs LEFT JOIN FOSS ON Clubs.lead_id = FOSS.stud_id;
+```
+
+## Output
+```
++---------------+---------------+------------------+-----------------+------------+--------------+------------+---------------------+------------+------------+------------------+-------------+-------+------+------------+------------+
+| club_id       | name          | lead_name        | faculty_advisor | founded_on | member_count | phone      | email               | lead_id    | stud_id    | name             | role        | class | year | events_reg | phone      |
++---------------+---------------+------------------+-----------------+------------+--------------+------------+---------------------+------------+------------+------------------+-------------+-------+------+------------+------------+
+| foss.mec      | FOSS MEC      | Jithin Jagadeesh | Sony P          |       2016 |          500 | 1234567890 | foss@mec.ac.in      | MDL20CS052 | MDL20CS052 | Jithin Jagadeesh | Chairperson | CSB   | 2024 |          6 | 1234567890 |
+| gdsc.mec      | GDSC MEC      | Alaka A J        | Sreekumar K     |       2020 |          500 | 7306023848 | gdsc@mec.ac.in      | MDL21CS012 | NULL       | NULL             | NULL        | NULL  | NULL |       NULL |       NULL |
+| iedc.mec      | IEDC MEC      | Ananya Daniel    | Sreekumar K     |       2021 |          500 | 1234567892 | iedc@mec.ac.in      | MDL20CS021 | NULL       | NULL             | NULL        | NULL  | NULL |       NULL |       NULL |
+| macs.mec      | MACS MEC      | Binoy            | Aysha Fymin     |       2015 |          500 | 1234567891 | macs@mec.ac.in      | MDL20CS030 | NULL       | NULL             | NULL        | NULL  | NULL |       NULL |       NULL |
+| tinkerhub.mec | Tinkerhub MEC | Anju Mohan       | Sreekumar K     |       2019 |          400 | 1234567893 | tinkerhub@mec.ac.in | MDL21EC018 | NULL       | NULL             | NULL        | NULL  | NULL |       NULL |       NULL |
+| tle.mec       | TLE MEC       | Hanna Salam      | Sony P          |       2021 |          300 | 1234567894 | tle@mec.ac.in       | MDL20CS029 | NULL       | NULL             | NULL        | NULL  | NULL |       NULL |       NULL |
++---------------+---------------+------------------+-----------------+------------+--------------+------------+---------------------+------------+------------+------------------+-------------+-------+------+------------+------------+
+6 rows in set (0.001 sec)
+```
+
+## RIGHT JOIN
+```
+SELECT * FROM Clubs RIGHT JOIN FOSS ON Clubs.lead_id = FOSS.stud_id;
+```
+
+### Output
+```
++----------+----------+------------------+-----------------+------------+--------------+------------+----------------+------------+------------+------------------+------------------+-------+------+------------+------------+
+| club_id  | name     | lead_name        | faculty_advisor | founded_on | member_count | phone      | email          | lead_id    | stud_id    | name             | role             | class | year | events_reg | phone      |
++----------+----------+------------------+-----------------+------------+--------------+------------+----------------+------------+------------+------------------+------------------+-------+------+------------+------------+
+| foss.mec | FOSS MEC | Jithin Jagadeesh | Sony P          |       2016 |          500 | 1234567890 | foss@mec.ac.in | MDL20CS052 | MDL20CS052 | Jithin Jagadeesh | Chairperson      | CSB   | 2024 |          6 | 1234567890 |
+| NULL     | NULL     | NULL             | NULL            |       NULL |         NULL |       NULL | NULL           | NULL       | MDL20CS120 | Vishnu P         | Vice Chairperson | CSB   | 2024 |          2 | 1234567891 |
+| NULL     | NULL     | NULL             | NULL            |       NULL |         NULL |       NULL | NULL           | NULL       | MDL21CS022 | Annu Kuruvilla   | Design Head      | CSB   | 2025 |          3 | 1234567894 |
+| NULL     | NULL     | NULL             | NULL            |       NULL |         NULL |       NULL | NULL           | NULL       | MDL21CS055 | Karthik G Kumar  | Secretary        | CSA   | 2025 |          3 | 1234567893 |
+| NULL     | NULL     | NULL             | NULL            |       NULL |         NULL |       NULL | NULL           | NULL       | MDL21CS060 | Mekha L          | Marketing Head   | CSA   | 2025 |          3 | 1234567892 |
++----------+----------+------------------+-----------------+------------+--------------+------------+----------------+------------+------------+------------------+------------------+-------+------+------------+------------+
+5 rows in set (0.001 sec)
+```
+
+## OUTER JOIN
+```
+SELECT * FROM Clubs LEFT JOIN FOSS ON Clubs.lead_id = FOSS.stud_id UNION SELECT * FROM Clubs RIGHT JOIN FOSS ON Clubs.lead_id = FOSS.stud_id;
+```
+
+### Output
+```
++---------------+---------------+------------------+-----------------+------------+--------------+------------+---------------------+------------+------------+------------------+------------------+-------+------+------------+------------+
+| club_id       | name          | lead_name        | faculty_advisor | founded_on | member_count | phone      | email               | lead_id    | stud_id    | name             | role             | class | year | events_reg | phone      |
++---------------+---------------+------------------+-----------------+------------+--------------+------------+---------------------+------------+------------+------------------+------------------+-------+------+------------+------------+
+| foss.mec      | FOSS MEC      | Jithin Jagadeesh | Sony P          |       2016 |          500 | 1234567890 | foss@mec.ac.in      | MDL20CS052 | MDL20CS052 | Jithin Jagadeesh | Chairperson      | CSB   | 2024 |          6 | 1234567890 |
+| gdsc.mec      | GDSC MEC      | Alaka A J        | Sreekumar K     |       2020 |          500 | 7306023848 | gdsc@mec.ac.in      | MDL21CS012 | NULL       | NULL             | NULL             | NULL  | NULL |       NULL |       NULL |
+| iedc.mec      | IEDC MEC      | Ananya Daniel    | Sreekumar K     |       2021 |          500 | 1234567892 | iedc@mec.ac.in      | MDL20CS021 | NULL       | NULL             | NULL             | NULL  | NULL |       NULL |       NULL |
+| macs.mec      | MACS MEC      | Binoy            | Aysha Fymin     |       2015 |          500 | 1234567891 | macs@mec.ac.in      | MDL20CS030 | NULL       | NULL             | NULL             | NULL  | NULL |       NULL |       NULL |
+| tinkerhub.mec | Tinkerhub MEC | Anju Mohan       | Sreekumar K     |       2019 |          400 | 1234567893 | tinkerhub@mec.ac.in | MDL21EC018 | NULL       | NULL             | NULL             | NULL  | NULL |       NULL |       NULL |
+| tle.mec       | TLE MEC       | Hanna Salam      | Sony P          |       2021 |          300 | 1234567894 | tle@mec.ac.in       | MDL20CS029 | NULL       | NULL             | NULL             | NULL  | NULL |       NULL |       NULL |
+| NULL          | NULL          | NULL             | NULL            |       NULL |         NULL |       NULL | NULL                | NULL       | MDL20CS120 | Vishnu P         | Vice Chairperson | CSB   | 2024 |          2 | 1234567891 |
+| NULL          | NULL          | NULL             | NULL            |       NULL |         NULL |       NULL | NULL                | NULL       | MDL21CS022 | Annu Kuruvilla   | Design Head      | CSB   | 2025 |          3 | 1234567894 |
+| NULL          | NULL          | NULL             | NULL            |       NULL |         NULL |       NULL | NULL                | NULL       | MDL21CS055 | Karthik G Kumar  | Secretary        | CSA   | 2025 |          3 | 1234567893 |
+| NULL          | NULL          | NULL             | NULL            |       NULL |         NULL |       NULL | NULL                | NULL       | MDL21CS060 | Mekha L          | Marketing Head   | CSA   | 2025 |          3 | 1234567892 |
++---------------+---------------+------------------+-----------------+------------+--------------+------------+---------------------+------------+------------+------------------+------------------+-------+------+------------+------------+
+10 rows in set (0.001 sec)
 ```
