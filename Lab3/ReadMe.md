@@ -99,3 +99,61 @@ select * from TLE union select * from FOSS;
 10 rows in set (0.001 sec)
 ```
 
+## UNION ALL
+
+```
+select * from TLE union all select * from GDSC;
+```
+
+### Output
+```
++------------+--------------------+------------------+-------+------+------------+------------+
+| stud_id    | name               | role             | class | year | events_reg | phone      |
++------------+--------------------+------------------+-------+------+------------+------------+
+| MDL20CS021 | Arathy Sha         | Events Head      | CSA   | 2024 |          5 | 1234567892 |
+| MDL20CS029 | Hanna Salam        | Chairperson      | CSB   | 2024 |          2 | 1234567890 |
+| MDL20EC043 | Jeswin Thomas      | Vice Chairperson | ECA   | 2024 |          5 | 1234567891 |
+| MDL21CS012 | Alaka A J          | Design Head      | CSB   | 2025 |          5 | 1234567894 |
+| MDL21CS102 | Vignesh S Naik     | CP Head          | CSA   | 2025 |          5 | 1234567893 |
+| MDL21CS012 | Alaka A J          | Chapter Lead     | CSB   | 2025 |          1 | 1234567890 |
+| MDL21CS022 | Amil S             | Web Lead         | CSA   | 2025 |          3 | 1234567893 |
+| MDL21CS030 | Arun Shaji         | Events Lead      | CSB   | 2025 |          3 | 1234567894 |
+| MDL21CS064 | Mrinalini Nair Ani | Operations Lead  | CSB   | 2025 |          3 | 1234567891 |
+| MDL21CS087 | Ria Sunil          | App Lead         | CSA   | 2025 |          3 | 1234567892 |
++------------+--------------------+------------------+-------+------+------------+------------+
+10 rows in set (0.000 sec)
+```
+
+## INTERSECT
+
+```
+select name, class, year from TLE intersect select name, class, year from GDSC;
+```
+
+### Output
+```
++-----------+-------+------+
+| name      | class | year |
++-----------+-------+------+
+| Alaka A J | CSB   | 2025 |
++-----------+-------+------+
+1 row in set (0.001 sec)
+```
+
+## EXCEPT / MINUS
+```
+select name, class, year from TLE except select name, class, year from GDSC;
+```
+
+### Output
+```
++----------------+-------+------+
+| name           | class | year |
++----------------+-------+------+
+| Arathy Sha     | CSA   | 2024 |
+| Hanna Salam    | CSB   | 2024 |
+| Jeswin Thomas  | ECA   | 2024 |
+| Vignesh S Naik | CSA   | 2025 |
++----------------+-------+------+
+4 rows in set (0.001 sec)
+```
